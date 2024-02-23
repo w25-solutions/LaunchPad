@@ -127,7 +127,7 @@ Integrates with Stripe to process subscription payments, handle invoices, and ma
 - External Payment services 
 - Transactional email provider
 
-# 4. Implementation Strategy
+# Implementation Strategy
 
 The implementation will happen in 5 stages, 4 microservices implementations and the acceptance criteria validation stage. 
 
