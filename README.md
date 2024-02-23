@@ -97,27 +97,30 @@ External payment gateways should be able to communicate subscription status chan
 
 ## Services Summary
 
-### Auth API
+- ### Auth API
 
 Provides authentication services, allowing users to sign up, log in, and manage their profiles securely using JWT for sessions.
 
-### Notifier
+- ### Notifier
 
 Manages sending transactional emails through SendGrid, including account verification, subscription notifications, and password resets.
 
-### Subscriptions API
+- ### Subscriptions API
 
 Handles subscription management, allowing users to subscribe, upgrade, downgrade, and cancel their subscriptions seamlessly.
 
-### Payments Webhooks API
+- ### Payments Webhooks API
 
 Integrates with Stripe to process subscription payments, handle invoices, and manage payment failures and retries.
 
-## Infrastructure
+## Infrastructure / Deployment
 
-- AWS Public Cloud Provider infrastructure
-- Containerization and Horizontal Scalability
+- The solution will be deployed on the AWS cloud provider
+- The system will use extensive Containerization and Horizontal Scalability
 - Rabbit MQ for Asynchronous communication between services
+- AWS API gateway as the System Entry-Point
+- The System will have a well-structured Monitoring, Logging and Alerting
+- Environments: Development, and Production
 
 ## Dependencies
 
