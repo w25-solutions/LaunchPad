@@ -115,12 +115,12 @@ Integrates with Stripe to process subscription payments, handle invoices, and ma
 
 ## Infrastructure / Deployment
 
-- The solution will be deployed on the AWS cloud provider
+- The solution can be deployed on any of the main public cloud providers
 - The system will use extensive Containerization and Horizontal Scalability
 - Rabbit MQ for Asynchronous communication between services
-- AWS API gateway as the System Entry-Point
-- The System will have a well-structured Monitoring, Logging and Alerting
-- Environments: Development, and Production
+- Preferable managed API gateway as the System Entry-Point
+- The System will use extensive Logging
+- Env vars for environment segmentation
 
 ## Dependencies
 
