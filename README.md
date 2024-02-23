@@ -33,23 +33,23 @@ Launch Pad will enable startups and developers to focus on their core product fe
 ## Functional Requirements
 
 - Secure user signup and login
-- Efficient ans simple subscription management
+- Efficient and simple subscription management
 - Seamless Stripe and SendGrid integration
 
 ## Non-Functional Requirements
 
-- Scalability to handle growth in user base
+- Scalability to handle growth in the user base
 - High availability for critical services
 - Security measures to protect user data
 - Extensibility through well bounded Microservices Architecture
-- Extensibility through Event Driven Architecture
+- Extensibility through Event-Driven Architecture
 
 ## Use Cases
 
 ### Actor: User
 
 - User Registration: <br />
-A new user can register for an account by providing their email address, a password, and verifying their email.
+A new user can register for an account by providing their email address, and a password, and verifying their email.
 
 - User Login: <br />
 A registered user can log in to their account using their email and password.
@@ -57,7 +57,7 @@ A registered user can log in to their account using their email and password.
 - Password Reset: <br />
 Users can reset their password if they forget it, through a secure process that verifies their identity via email.
 
-- Update Information: <br />
+- Update User Information: <br />
 Users can update their information (name). <br />
 Users can`t change their registered e-mail
 
@@ -74,12 +74,21 @@ Extensible to any other payment provider as needed
 - View Subscription History: <br />
 Users can view their current and past subscriptions, including start dates, end dates, and payment history.
 
-- Payment and Email Integration
-- Payment Processing: When a user subscribes or changes their subscription, the payment is processed through Stripe, with details of the transaction stored securely.
-- Handle Payment Failures: The system automatically handles payment failures, notifying the user and attempting retries as configured.
-- Send Transactional Emails: For events like account verification, subscription changes, and payment invoices, the system sends emails through SendGrid.
-- Invoice Generation: Upon every successful payment, an invoice is generated and sent to the user's email.
-- Subscription Renewal Notifications: Before a subscription renewal, users receive an email notification reminding them of the upcoming charge.
+### Actor: System itself
+
+- Notify the user regarding successful subscription: <br />
+The system should notify the user by email about successful subscriptions.
+
+- Notify the user regarding subscription expiration: <br />
+The system should notify the user by email about the subscription expiration.
+
+### Actor: External Systems
+
+- Payment Processing: <br />
+External payment gateways should be able to communicate successful and failed payment attempts to the system.
+
+- Subscription Renewal Notifications: <br />
+External payment gateways should be able to communicate subscription status changes to the system.
 
 # Proposed System Design 
 
