@@ -17,6 +17,7 @@ Launch Pad will enable startups and developers to focus on their core product fe
 - To reduce development time for SaaS projects
 - To offer scalable and secure user management and subscription services
 - To streamline integration with payment and email services
+- To be a modular and extensible solution
 
 ## Scope
 
@@ -25,31 +26,53 @@ Launch Pad will enable startups and developers to focus on their core product fe
 - Stripe integration for handling subscriptions
 - SendGrid integration for transactional emails
 - JWT authentication, incorporating subscription data
+- Modularity and Extensibility, easy to change external providers or extend capabilities 
 
 # Requirements
 
 ## Functional Requirements
 
 - Secure user signup and login
-- Efficient subscription management interface
+- Efficient ans simple subscription management
 - Seamless Stripe and SendGrid integration
 
 ## Non-Functional Requirements
+
 - Scalability to handle growth in user base
 - High availability for critical services
 - Security measures to protect user data
+- Extensibility through well bounded Microservices Architecture
+- Extensibility through Event Driven Architecture
 
 ## Use Cases
 
-- User Registration: A new user can register for an account by providing their email address, creating a password, and verifying their email.
-- User Login: A registered user can log in to their account using their email and password.
-- Password Reset: Users can reset their password if they forget it, through a secure process that verifies their identity via email.
-- Update Profile: Users can update their profile information, including password and email address.
-- View Subscription Plans: Users can browse through different subscription plans available and view details about each plan.
-- Subscribe: Users can subscribe to a plan, entering payment information through a secure Stripe integration.
-- Change Subscription Plan: Users can change their subscription plan, choosing to upgrade or downgrade based on their needs.
-- View Subscription History: Users can view their current and past subscriptions, including start dates, end dates, and payment history.
-- Cancel Subscription: Users can cancel their subscription, with the option to provide feedback on their reason for cancellation.
+### Actor: User
+
+- User Registration: <br />
+A new user can register for an account by providing their email address, a password, and verifying their email.
+
+- User Login: <br />
+A registered user can log in to their account using their email and password.
+
+- Password Reset: <br />
+Users can reset their password if they forget it, through a secure process that verifies their identity via email.
+
+- Update Information: <br />
+Users can update their information (name). <br />
+Users can`t change their registered e-mail
+
+- Get Subscription Information: <br /> 
+Users can retrieve their subscription information (plan name, expiration date).
+
+- Cancel Subscription:  <br />
+Users can cancel their subscription, with the option to provide feedback on their reason for cancellation.
+
+- Subscribe: <br />
+Users can subscribe to a plan, entering payment information through a secure Stripe integration.<br />
+Extensible to any other payment provider as needed 
+
+- View Subscription History: <br />
+Users can view their current and past subscriptions, including start dates, end dates, and payment history.
 
 - Payment and Email Integration
 - Payment Processing: When a user subscribes or changes their subscription, the payment is processed through Stripe, with details of the transaction stored securely.
