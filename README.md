@@ -150,14 +150,14 @@ Auth API - Design: [Solution Design to be created](#)
 
 - TBD in Stage 4
 
-# 5. Testing and Validation
+# Testing and Validation
 
 - Comprehensive unit and integration tests will be developed to cover all aspects of the system.
 - API Load testing to ensure scalability (JMeter / Blaze Meter).
 - Automated Acceptance E2E Tests based on the Use Cases
 - Use Cases working properly and as described will be the Acceptance Criteria
 
-# 6. Risks and Mitigations
+# Risks and Mitigations
 
 - Dependency on External Services: Relying on third-party services like Stripe for payments and SendGrid for emails introduces risks related to service outages or API changes.
 
@@ -174,7 +174,7 @@ Auth API - Design: [Solution Design to be created](#)
   Mitigation: Adhere to best security practices, including regular audits, using encryption for data storage and transmission, and implementing robust access controls. Consider obtaining security certifications to build trust with users.
 
 
-# 7. Future Considerations
+# Future Considerations
 
 - Feature Expansion: <br /> Based on community feedback and market demand, it will be considered expanding the features of Launch Pad. This could include more integrations with other payment providers, advanced analytics for subscription management, or enhanced security features.
 
