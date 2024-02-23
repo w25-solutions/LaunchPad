@@ -1,6 +1,7 @@
+`Solution - Tech Design Doc`
 # Launch Pad - SaaS Base Kit
 
-# Summary
+# Introduction
 
 ## Purpose
 
@@ -48,46 +49,46 @@ Launch Pad will enable startups and developers to focus on their core product fe
 
 ### Actor: User
 
-- User Registration: <br />
+- 1.1 User Registration: <br />
 A new user can register for an account by providing their email address, and a password, and verifying their email.
 
-- User Login: <br />
+- 1.2 User Login: <br />
 A registered user can log in to their account using their email and password.
 
-- Password Reset: <br />
+- 1.3 Password Reset: <br />
 Users can reset their password if they forget it, through a secure process that verifies their identity via email.
 
-- Update User Information: <br />
+- 1.4 Update User Information: <br />
 Users can update their information (name). <br />
 Users can`t change their registered e-mail
 
-- Get Subscription Information: <br /> 
-Users can retrieve their subscription information (plan name, expiration date).
-
-- Cancel Subscription:  <br />
-Users can cancel their subscription, with the option to provide feedback on their reason for cancellation.
-
-- Subscribe: <br />
+- 2.1 Subscribe: <br />
 Users can subscribe to a plan, entering payment information through a secure Stripe integration.<br />
 Extensible to any other payment provider as needed 
 
-- View Subscription History: <br />
+- 2.2 Get Subscription Information: <br /> 
+Users can retrieve their subscription information (plan name, expiration date).
+
+- 2.3 Cancel Subscription:  <br />
+Users can cancel their subscription, with the option to provide feedback on their reason for cancellation.
+
+- 2.4 View Subscription History: <br />
 Users can view their current and past subscriptions, including start dates, end dates, and payment history.
 
 ### Actor: System itself
 
-- Notify the user regarding successful subscription: <br />
+- 3.1 Notify the user regarding successful subscription: <br />
 The system should notify the user by email about successful subscriptions.
 
-- Notify the user regarding subscription expiration: <br />
+- 3.2 Notify the user regarding subscription expiration: <br />
 The system should notify the user by email about the subscription expiration.
 
 ### Actor: External Systems
 
-- Payment Processing: <br />
+- 4.1 Payment Processing: <br />
 External payment gateways should be able to communicate successful and failed payment attempts to the system.
 
-- Subscription Renewal Notifications: <br />
+- 4.2 Subscription Renewal Notifications: <br />
 External payment gateways should be able to communicate subscription status changes to the system.
 
 # Proposed System Design 
@@ -112,6 +113,12 @@ Handles subscription management, allowing users to subscribe, upgrade, downgrade
 
 Integrates with Stripe to process subscription payments, handle invoices, and manage payment failures and retries.
 
+## Infrastructure
+
+- AWS Public Cloud Provider infrastructure
+- Containerization and Horizontal Scalability
+- Rabbit MQ for Asynchronous communication between services
+
 ## Dependencies
 
 - External Payment services 
@@ -119,18 +126,57 @@ Integrates with Stripe to process subscription payments, handle invoices, and ma
 
 # 4. Implementation Strategy
 
-TBD
+The implementation will happen in 5 stages, 4 microservices implementations and the acceptance criteria validation stage. 
+
+## Auth API
+
+Auth API - Design: [Solution Design to be created](#)
+
+- Use Cases covered by this capability/service:
+  - 1.1 User Registration
+  - 1.2 User Login
+  - 1.3 Password Reset
+  - 1.4 Update User Information
+
+## Notifier
+
+- TBD in Stage 2
+
+## Subscriptions API
+
+- TBD in Stage 3
+
+## Payments Webhooks API
+
+- TBD in Stage 4
 
 # 5. Testing and Validation
 
 - Comprehensive unit and integration tests will be developed to cover all aspects of the system.
-- Load testing to ensure scalability.
-
+- API Load testing to ensure scalability (JMeter / Blaze Meter).
+- Automated Acceptance E2E Tests based on the Use Cases
+- Use Cases working properly and as described will be the Acceptance Criteria
 
 # 6. Risks and Mitigations
 
-TBD
+- Dependency on External Services: Relying on third-party services like Stripe for payments and SendGrid for emails introduces risks related to service outages or API changes.
+
+  Mitigation: The system will work with abstraction layers for these services to make swapping out or updating services more manageable. Regularly review and test the integration points for these services to ensure they're up to date with the latest API changes and best practices.
+
+
+- Scalability Concerns: As user bases grow, the system must scale appropriately to handle increased loads, particularly for the Auth API and Subscriptions API.
+
+  Mitigation: Design services with scalability in mind, using EDA Architecture and cloud-based infrastructure that can automatically scale to meet demand. Regularly conduct load testing to identify bottlenecks and address them proactively.
+
+
+- Security Vulnerabilities: Handling user authentication and payment information requires rigorous security measures to protect against breaches and data theft.
+
+  Mitigation: Adhere to best security practices, including regular audits, using encryption for data storage and transmission, and implementing robust access controls. Consider obtaining security certifications to build trust with users.
+
 
 # 7. Future Considerations
 
-TBD
+- Feature Expansion: <br /> Based on community feedback and market demand, it will be considered expanding the features of Launch Pad. This could include more integrations with other payment providers, advanced analytics for subscription management, or enhanced security features.
+
+- Technology Upgrades: <br /> Keep the technology stack up to date with the latest advancements to maintain performance, security, and developer productivity. Plan for periodic technology refreshes and refactoring efforts.
+
